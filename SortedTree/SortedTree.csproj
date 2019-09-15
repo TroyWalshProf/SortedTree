@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>TroyWalshProf.SortedTree</PackageId>
+    <RootNamespace>TroyWalshProf</RootNamespace>
+    <Version>0.0.1</Version>
+    <Company>TroyWalshProf</Company>
+    <Authors>Troy Walsh</Authors>
+    <Copyright>Copyright 2019</Copyright>
+    <Description>An automatically sorted tree structure inspired by the MUMPS array structure.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/TroyWalshProf/SortedTree</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/TroyWalshProf/SortedTree</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>tree data structure</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+</Project>
