@@ -3,38 +3,11 @@ using System;
 using System.Text;
 using TroyWalshProf;
 
-namespace MumpTests
+namespace Tests
 {
     [TestClass]
-    public class stUnit
+    public class UnitTests
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-            SortedTree<int, string> thing = new SortedTree<int, string>();
-            var node = thing.Set("dfdf", 1, 2, 3, 4, 5);
-            node = thing.Set("d", 1, 2);
-            node = thing.Set("zz", 2, 1);
-        }
-
-        [TestMethod]
-        public void TestM2()
-        {
-            var tree = new SortedTree<int, String>();
-            tree.Set("12345b", 1, 2, 3, 4, 5);
-            tree.Visit(1, 2, 3, 4, 6).Set("12346b");
-            tree.Visit(2, 2).Set("22e");
-            tree.Visit(3, 2).Set("32f");
-            var singleNode = tree.Next();
-
-            while (singleNode != null)
-            {
-                Console.WriteLine(singleNode.Value + "    " + string.Join(", ", singleNode.GetPath()));
-                singleNode = singleNode.Next();
-            }
-
-        }
-
         [TestMethod]
         public void Order()
         {
