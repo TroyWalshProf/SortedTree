@@ -11,13 +11,13 @@ namespace Tests
         [TestMethod]
         public void Order()
         {
-            var thing = new SortedTree<int, String>();
+            var sortedTree = new SortedTree<int, String>();
 
-            thing.Visit(1, 3).Set("ing");
-            thing.Visit(1, 1).Set("Pa");
-            thing.Visit(1, 2).Set("ss");
+            sortedTree.Visit(1, 3).Set("ing");
+            sortedTree.Visit(1, 1).Set("Pa");
+            sortedTree.Visit(1, 2).Set("ss");
 
-            var singleNode = thing.Next();
+            var singleNode = sortedTree.Next();
             StringBuilder nodeValues = new StringBuilder();
 
             while (singleNode != null)
@@ -32,14 +32,14 @@ namespace Tests
         [TestMethod]
         public void OrderOffNode()
         {
-            var thing = new SortedTree<int, String>();
+            var sortedTree = new SortedTree<int, String>();
 
-            thing.Visit(1, 9).Set("ing");
-            thing.Visit(1, 3).Set("Pa");
-            thing.Visit(1, 6).Set("ss");
-            thing.Visit(1, 0).Set("NOT");
+            sortedTree.Visit(1, 9).Set("ing");
+            sortedTree.Visit(1, 3).Set("Pa");
+            sortedTree.Visit(1, 6).Set("ss");
+            sortedTree.Visit(1, 0).Set("NOT");
 
-            var singleNode = thing.Visit(1, 0).Next();
+            var singleNode = sortedTree.Visit(1, 0).Next();
             StringBuilder nodeValues = new StringBuilder();
 
             while (singleNode != null)
@@ -54,37 +54,37 @@ namespace Tests
         [TestMethod]
         public void MoveRoot()
         {
-            var thing = new SortedTree<int, String>();
+            var sortedTree = new SortedTree<int, String>();
 
-            thing.Visit(1).Set("Node");
+            sortedTree.Visit(1).Set("Node");
 
-            Assert.ThrowsException<CircularStructureException>(() => thing.MoveTo(thing.Visit(1)));
+            Assert.ThrowsException<CircularStructureException>(() => sortedTree.MoveTo(sortedTree.Visit(1)));
 
         }
 
         [TestMethod]
         public void MoveBad()
         {
-            var thing = new SortedTree<int, String>();
+            var sortedTree = new SortedTree<int, String>();
 
-            thing.Visit(1).Set("1");
-            thing.Visit(1, 2).Set("12");
-            thing.Visit(1, 2, 3).Set("123");
+            sortedTree.Visit(1).Set("1");
+            sortedTree.Visit(1, 2).Set("12");
+            sortedTree.Visit(1, 2, 3).Set("123");
 
-            Assert.ThrowsException<CircularStructureException>(() => thing.Visit(1).MoveTo(thing.Visit(1, 2, 3)));
+            Assert.ThrowsException<CircularStructureException>(() => sortedTree.Visit(1).MoveTo(sortedTree.Visit(1, 2, 3)));
         }
 
         [TestMethod]
         public void OrderWithMove()
         {
-            var thing = new SortedTree<int, String>();
+            var sortedTree = new SortedTree<int, String>();
 
-            thing.Visit(1, 1).Set("Pa");
-            thing.Visit(1, 3).Set("ing");
-            thing.Visit(2).Set("ss");
+            sortedTree.Visit(1, 1).Set("Pa");
+            sortedTree.Visit(1, 3).Set("ing");
+            sortedTree.Visit(2).Set("ss");
 
-            thing.Visit(2).MoveTo(thing.Visit(1));
-            var singleNode = thing.Next();
+            sortedTree.Visit(2).MoveTo(sortedTree.Visit(1));
+            var singleNode = sortedTree.Next();
             StringBuilder nodeValues = new StringBuilder();
 
             while (singleNode != null)
@@ -99,16 +99,16 @@ namespace Tests
         [TestMethod]
         public void OrderWithMoveWithReplace()
         {
-            var thing = new SortedTree<int, String>();
+            var sortedTree = new SortedTree<int, String>();
 
-            thing.Visit(1, 1).Set("Pa");
-            thing.Visit(1, 3).Set("ing");
-            thing.Visit(1, 2).Set("REPLACENODE");
-            thing.Visit(1, 2, 3).Set("REPLACECHILD");
-            thing.Visit(2).Set("ss");
+            sortedTree.Visit(1, 1).Set("Pa");
+            sortedTree.Visit(1, 3).Set("ing");
+            sortedTree.Visit(1, 2).Set("REPLACENODE");
+            sortedTree.Visit(1, 2, 3).Set("REPLACECHILD");
+            sortedTree.Visit(2).Set("ss");
 
-            thing.Visit(2).MoveTo(thing.Visit(1), true);
-            var singleNode = thing.Next();
+            sortedTree.Visit(2).MoveTo(sortedTree.Visit(1), true);
+            var singleNode = sortedTree.Next();
             StringBuilder nodeValues = new StringBuilder();
 
             while (singleNode != null)
