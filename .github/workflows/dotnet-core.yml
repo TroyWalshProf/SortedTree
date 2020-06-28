@@ -31,4 +31,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release  -p:Version=${{steps.ver.outputs.content}} --no-restore
+      run: dotnet build --no-restore --configuration Release  -p:Version=${{steps.ver.outputs.content}}
