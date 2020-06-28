@@ -9,8 +9,7 @@ on:
 
 jobs:
   build:
-    if: github.
-
+    
     runs-on: ubuntu-latest
 
     steps:
