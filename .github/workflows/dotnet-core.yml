@@ -14,6 +14,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+
+    - name: Read version
+      id: ver
+      uses: juliangruber/read-file-action@v1
+      with:
+        path: ./release.ver
+    - name: Echo package.json
+      run: echo ${{ steps.ver.outputs.content }}
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -21,4 +31,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release  -p:Version=1.2.3.4 --no-restore
+      run: dotnet build --configuration Release  -p:Version=${{steps.ver.outputs.content}} --no-restore
