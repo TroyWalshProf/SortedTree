@@ -20,6 +20,7 @@ jobs:
       uses: juliangruber/read-file-action@v1
       with:
         path: ./release.ver
+
     - name: Echo package.json
       run: echo ${{ steps.ver.outputs.content }}
     
@@ -28,6 +29,9 @@ jobs:
 
     - name: Echo ref 2
       run: $env:buildver = "${{github.ref}}".trim().substring(11)
+    
+    - name: set
+      run: echo "[System.Environment]::SetEnvironmentVariable('buildver', 'zzz',[System.EnvironmentVariableTarget]::Machine)"
       
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
