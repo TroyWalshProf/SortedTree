@@ -21,12 +21,10 @@ jobs:
       run: echo ${{ steps.ver.outputs.content }}
     
     - name: Echo ref
-      run: |
-        $s = "::set-output name=production::" + "${{github.ref}}".trim().substring(11);
-        Write-Output $s
+      run: echo "::set-output name=production::" + "${{github.ref}}".trim().substring(11)
       
     - name: Echo ver 
-      run: Write-Output ${{ steps.vars.outputs.production }}
+      run: echo ${{ steps.vars.outputs.production }}
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -35,4 +33,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release  -p:Version=${{steps.ver.outputs.content}}
+      run: dotnet build --no-restore --configuration Release  -p:Version=${{steps.ver.outputs.production}}
