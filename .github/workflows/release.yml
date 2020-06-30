@@ -33,7 +33,7 @@ jobs:
     - name: set
       run: |
         $test = "${{github.ref}}".trim().substring(11)
-        [System.Environment]::SetEnvironmentVariable('FOO', $test) 
+        [System.Environment]::SetEnvironmentVariable('FOO', $test, [System.EnvironmentVariableTarget]::Machine)
       
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
