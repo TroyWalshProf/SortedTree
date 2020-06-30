@@ -23,7 +23,7 @@ jobs:
     - name: Echo ref
       run: |
         $s = "::set-output name=production::" + "${{github.ref}}".trim().substring(11);
-        echo $s
+        Write-Output $s
       
     - name: Echo ver 
       run: echo ${{ steps.vars.outputs.production }}
