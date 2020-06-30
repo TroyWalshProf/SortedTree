@@ -34,13 +34,18 @@ jobs:
       run: |
         $test = "${{github.ref}}".trim().substring(11)
         Write-Host $test
-        [System.Environment]::SetEnvironmentVariable('buildver', $test, [System.EnvironmentVariableTarget]::Machine)
+        [System.Environment]::SetEnvironmentVariable('buildver2', $test, [System.EnvironmentVariableTarget]::Machine)
+
+    - name: read
+      run: |
+        Write-Host [System.Environment]::GetEnvironmentVariable('buildver2','machine')
       
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.101
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore --configuration Release  -p:Version=$env:buildver
+
+#    - name: Setup .NET Core
+#      uses: actions/setup-dotnet@v1
+#      with:
+#        dotnet-version: 3.1.101
+#    - name: Install dependencies
+#      run: dotnet restore
+#    - name: Build
+#      run: dotnet build --no-restore --configuration Release  -p:Version=$env:buildver
