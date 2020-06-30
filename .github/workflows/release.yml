@@ -5,7 +5,10 @@ on:
     types: [published]
 
 jobs:
+  
   build:
+    env:
+      buildver: "invalid"
     
     runs-on: windows-latest
 
@@ -23,9 +26,9 @@ jobs:
     - name: Echo ref
       run: echo "::set-output name=production::${{ github.ref }}"
 
-    - name: Echo ref
-      run: $env:BuildVer = "${{github.ref}}".trim().substring(11)
-
+    - name: Echo ref 2
+      run: $env:buildver = "${{github.ref}}".trim().substring(11)
+      
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -33,4 +36,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release  -p:Version=$env:BuildVer
+      run: dotnet build --no-restore --configuration Release  -p:Version=$env:buildver
