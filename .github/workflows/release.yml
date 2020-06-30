@@ -21,7 +21,9 @@ jobs:
       run: echo ${{ steps.ver.outputs.content }}
     
     - name: Echo ref
-      run: echo "::set-output name=production::" + "${{github.ref}}".trim().substring(11)
+      run: |
+        $s = "::set-output name=production::" + "${{github.ref}}".trim().substring(11);
+        echo $s
       
     - name: Echo ver 
       run: echo ${{ steps.vars.outputs.production }}
