@@ -23,9 +23,6 @@ jobs:
     - name: Echo ref
       run: echo "::set-output name=production::" + "${{github.ref}}".trim().substring(11)
       
-    - name: Echo ver 
-      run: echo ${{ steps.vars.outputs.production }}
-
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
