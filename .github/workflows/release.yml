@@ -38,7 +38,7 @@ jobs:
 
     - name: read
       run: |
-        Write-Host [System.Environment]::GetEnvironmentVariable('buildver2','machine')
+        Write-Host $env:buildver2
       
 
 #    - name: Setup .NET Core
