@@ -22,7 +22,10 @@ jobs:
     
     - name: Echo ref
       run: echo "::set-output name=production::${{ github.ref }}"
-      
+
+    - name: Echo ref
+      run: $Env:BuildVer = "${{github.ref}}".trim().substring(11)
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -30,4 +33,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release  -p:Version=${{ github.ref }}
+      run: dotnet build --no-restore --configuration Release  -p:Version=$Env:BuildVer
