@@ -30,6 +30,15 @@ jobs:
     - name: Echo ref 2
       run: $env:buildver = "${{github.ref}}".trim().substring(11)
     
+    - name: SETT
+      run: $Env:FOO = "ZZZ"
+    
+    - name: READDD
+      run: $Env:FOO
+    
+    - name: READDDd
+      run: echo $Env:FOO
+    
     - name: set
       run: |
         $test = "${{github.ref}}".trim().substring(11)
