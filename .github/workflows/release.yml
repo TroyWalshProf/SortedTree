@@ -22,6 +22,11 @@ jobs:
     
     - name: Echo ref
       run: echo "::set-output name=production::${{github.ref}}"
+    
+    - name: Dump env context
+      env:
+        ENV_CONTEXT: ${{ github.ref }}
+        run: write-host "$env:ENV_CONTEXT"
       
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -30,4 +35,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release  -p:Version=${{steps.ver.outputs.production}}
+      run: dotnet build --no-restore --configuration Release  -p:Version="$env:ENV_CONTEXT"
