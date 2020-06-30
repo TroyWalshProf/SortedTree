@@ -40,14 +40,14 @@ jobs:
     - name: Echo package.json
       run: echo ${{ steps.ver.outputs.content }}
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.101
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore --configuration Release  -p:Version=${{steps.ver.outputs.content}}
+ #   - name: Setup .NET Core
+ #     uses: actions/setup-dotnet@v1
+ #     with:
+ #       dotnet-version: 3.1.101
+ #   - name: Install dependencies
+ #     run: dotnet restore
+ #   - name: Build
+ #     run: dotnet build --no-restore --configuration Release  -p:Version=${{steps.ver.outputs.content}}
 
     - uses: release-drafter/release-drafter@master
       env:
