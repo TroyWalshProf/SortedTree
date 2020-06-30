@@ -33,4 +33,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release  -p:Version=$env:computername
+      run: dotnet build --no-restore --configuration Release  -p:Version=$env:BuildVer
