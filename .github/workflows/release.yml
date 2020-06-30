@@ -31,7 +31,8 @@ jobs:
       run: $env:buildver = "${{github.ref}}".trim().substring(11)
     
     - name: set
-      run: "[System.Environment]::SetEnvironmentVariable('buildver', '${{github.ref}}',[System.EnvironmentVariableTarget]::Machine)"
+      run: |
+        [System.ServiceProcess.ServiceController]::SetEnvironmentVariable('FOO', 'bar') 
       
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -40,4 +41,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Release  -p:Version=$env:buildver
+      run: dotnet build --no-restore --configuration Release  -p:Version=$env:FOO
