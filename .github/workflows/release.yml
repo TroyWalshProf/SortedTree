@@ -59,5 +59,8 @@ jobs:
       
     - name: Build
       run: |
-        $test = "${{github.ref}}".trim().substring(11)
-        dotnet build --no-restore --configuration Release  -p:Version=$test
+        if ("${{github.ref}}".trim() -notmatch '^refs/tags/v(\d+\.\d+\.\d+)$') {
+          exit 1
+        }
+        $version = matches[1]
+        dotnet build --no-restore --configuration Release -p:Version=$version
