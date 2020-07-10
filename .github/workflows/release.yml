@@ -41,9 +41,11 @@ jobs:
     
     - name: set
       run: |
-        $test = "${{github.ref}}".trim().substring(11)
-        Write-Host $test
-        [System.Environment]::SetEnvironmentVariable('buildver2', $test, [System.EnvironmentVariableTarget]::Machine)
+        if ("${{github.ref}}".trim() -notmatch '^refs/tags/v(\d+\.\d+\.\d+)$') {
+          exit 1
+        }
+        
+        matches[0]
 
     - name: read
       run: |
